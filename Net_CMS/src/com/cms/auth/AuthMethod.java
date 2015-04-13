@@ -4,7 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * 用来标识类中的哪些方法需要进行权限控制
+ * 鏉冮檺鏂规硶
  */
 
 @Retention(RetentionPolicy.RUNTIME)
