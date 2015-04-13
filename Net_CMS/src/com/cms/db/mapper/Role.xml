@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.IRoleDao">
+
+	<resultMap type="com.cms.model.Role" id="roleMap">
+		<id property="id" column="id" />
+		<result property="roleName" column="roleName" />
+		<result property="roleValue" column="roleValue" />
+		<result property="roleDesc" column="roleDesc" />
+	</resultMap>
+	
+	<resultMap type="com.cms.model.Role" id="roleRightMap" extends="roleMap">
+		<collection property="rights" ofType="com.cms.model.Right">
+			<id property="id" column="id"/>
+			<result property="rightName" column="rightName"/>
+			<result property="rightUrl" column="rightUrl"/>
+			<result property="rightDesc" column="rightDesc"/>
+			<result property="rightPos" column="rightPos"/>
+			<result property="rightCode" column="rightCode"/>
+		</collection>
+	</resultMap>
+	
+
+</mapper>

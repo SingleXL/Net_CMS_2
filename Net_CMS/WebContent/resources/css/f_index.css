@@ -1,0 +1,7 @@
+.panel-heading{background-color: white !important;}
+body{background:#eaeaea}
+.panel{border-radius:2px}
+.navbar{border-radius:2px}
+.panel-body {padding: 5px;}
+.dropdown-menu>li>a:hover{background:#15b4ff}
+
