@@ -12,7 +12,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="wuserIdth=device-wuserIdth, initial-scale=1.0, maximum-scale=1.0">
 	<link rel="icon" href="<%=basePath %>/resources/imgs/favcion.png" />	
-    <title>CMS鍚庡彴绠＄悊</title>
 </head>
 
 <body>
@@ -21,11 +20,11 @@
 	<table class="table table-hover table-bordered" style="font-size: 15px;">
 		<thead>
 			<tr>
-				<th><b>鐢ㄦ埛搴忓彿</b></th>
-				<th><b>鐢ㄦ埛鍚嶇О</b></th>
-				<th><b>鐢ㄦ埛鏄电О</b></th>
-				<th><b>鐢ㄦ埛閭</b></th>
-				<th><b>鐢ㄦ埛鎿嶄綔</b></th>
+				<th><b>用户ID</b></th>
+				<th><b>用户名</b></th>
+				<th><b>用户昵称</b></th>
+				<th><b>用户邮箱</b></th>
+				<th><b>用户操作</b></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -49,13 +48,13 @@
 		<tfoot>
 			<tr>
 				<td colspan="5" style="text-align:right;font-size: 12px;padding-right: 20px;">
-				    <a class="previous" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo-1}">涓婁竴椤�</a> 
+				    <a class="previous" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo-1}">上一页</a> 
 				    &nbsp;
-				    <a class="next" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo+1}">涓嬩竴椤�</a> 
+				    <a class="next" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo+1}">下一页</a> 
 				    &nbsp;
-				          褰撳墠绗<span class="currentNo">${pageUser.pageNo }</span>椤�
+				          当前第<span class="currentNo">${pageUser.pageNo }</span>页
 				    &nbsp;
-				         鍏<span class="totalPageNum">${pageUser.totalPageNum }</span>椤�
+				         共<span class="totalPageNum">${pageUser.totalPageNum }</span>页
 				</td>
 			</tr>
 		</tfoot>
