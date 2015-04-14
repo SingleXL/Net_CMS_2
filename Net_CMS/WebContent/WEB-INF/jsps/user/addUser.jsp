@@ -13,72 +13,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="wuserIdth=device-wuserIdth, initial-scale=1.0, maximum-scale=1.0">
 	<link rel="icon" href="<%=basePath %>/resources/imgs/favcion.png" />	
-    <title>CMS鍚庡彴绠＄悊</title>
+    <title>CMS后台管理</title>
 </head>
 
 <body>
 
-<h3>娣诲姞鐢ㄦ埛</h3>
+<h3>添加用户</h3>
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-2" style="max-width: 380px;">
 	
 	<sf:form class="form-horizontal gg" modelAttribute="user" method="post">
 	    <div class="form-group form-group-md">
-	        <label class="col-sm-3 control-label" >鐢ㄦ埛鍚</label>
+	        <label class="col-sm-3 control-label" >用户名</label>
 	        <div class="col-sm-9">
 	            <sf:input path="name" class="form-control" />
 	        </div>
 	    </div>
 	    
 	    <div class="form-group form-group-md">
-	        <label class="col-sm-3 control-label" >鐢ㄦ埛鏄电О</label>
+	        <label class="col-sm-3 control-label" >用户昵称</label>
 	        <div class="col-sm-9">
 	            <sf:input path="nickname" class="form-control"/>
 	        </div>
 	    </div>
 	    
 	    <div class="form-group form-group-md">
-	        <label class="col-sm-3 control-label" >瀵嗙爜</label>
+	        <label class="col-sm-3 control-label" >密码</label>
 	        <div class="col-sm-9">
 	            <sf:input path="pass" class="form-control"/>
 	        </div>
 	    </div>
 	    
 	    <div class="form-group form-group-md">
-	        <label class="col-sm-3 control-label" >閭</label>
+	        <label class="col-sm-3 control-label" >邮箱</label>
 	        <div class="col-sm-9">
 	            <sf:input path="email" class="form-control"/>
 	        </div>
 	    </div>
-	    
-	    <button type="submit" class="btn btn-primary pull-right">娣诲姞</button>
+	    <button type="submit" class="btn btn-primary pull-right">添加</button>
 	</sf:form>
-	
-	<button class="ad">dd</button>
-	
-	<script type="text/javascript">
-		$(function(){
-			$(".ad").click(function(e){
-				
-				var options = {
-	                    url: "indexAjax.aspx",
-	                    target: "#div2",
-	                    success: function () {
-	                        alert("ajax璇锋眰鎴愬姛");
-	                    }
-	                };
-				
-				 $('.gg').submit(function(){
-					 $(this).ajaxSubmit();   
-					 return false;
-					 
-				 });  
-				 console.log($(".gg"));
-				 
-			});
-		});
-	</script>
 	
 </div>
 
@@ -87,7 +61,19 @@
 </div>
 
 <script type="text/javascript">
-
+$(function(){
+	
+	//表单提交
+	var options = {
+		dataType:"json",
+        success: function (e) {
+            console.log(e);
+        }
+    };
+ 
+	$('.gg').ajaxForm(options);
+	
+});
 </script>
 </body>
 </html>

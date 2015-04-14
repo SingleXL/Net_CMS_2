@@ -48,10 +48,10 @@
              
                 <li><a href=""><i class="fa fa-arrow-circle-o-right"></i> <span>鏉冮檺绠＄悊</span></a></li>
                 
-                <li class="nav-parent"><a href=""><i class="fa fa-user"></i> <span>鐢ㄦ埛绠＄悊</span></a>
+                <li class="nav-parent"><a href=""><i class="fa fa-user"></i> <span>用户管理</span></a>
                     <ul class="children">
                         <li><a href="<%=basePath %>/admin/user/listPageUser"><i class="fa fa-caret-right"></i>鐢ㄦ埛鍒楄〃</a></li>
-                        <li><a href="<%=basePath %>/admin/user/addUser"><i class="fa fa-caret-right"></i>娣诲姞鐢ㄦ埛</a></li>
+                        <li><a href="<%=basePath %>/admin/user/addUser"><i class="fa fa-caret-right"></i>添加用户</a></li>
                         <li><a href="<%=basePath %>/admin/user/userRight"><i class="fa fa-caret-right"></i>鐢ㄦ埛鏉冮檺</a></li>
                     </ul>
                 </li>

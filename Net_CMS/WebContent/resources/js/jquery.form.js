@@ -37,7 +37,7 @@
             target: '#output'
         });
     });
-    
+   
     You can also use ajaxForm with delegation (requires jQuery v1.7+), so the
     form does not have to exist when you invoke ajaxForm:
 
@@ -752,7 +752,7 @@ $.fn.ajaxForm = function(options) {
             .on('click.form-plugin', this.selector, options, captureSubmittingElement);
         return this;
     }
-
+    
     return this.ajaxFormUnbind()
         .bind('submit.form-plugin', options, doAjaxSubmit)
         .bind('click.form-plugin', options, captureSubmittingElement);

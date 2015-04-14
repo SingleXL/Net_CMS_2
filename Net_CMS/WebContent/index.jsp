@@ -16,6 +16,7 @@
 <link rel="icon" href="<%=basePath %>/resources/imgs/favcion.png" />
 
 <script type="text/javascript" src="<%=basePath %>/resources/js/jquery.js"></script>
+<script type="text/javascript" src="<%=basePath %>/resources/js/jquery.form.js"></script>
 <script type="text/javascript" src="<%=basePath %>/resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>/resources/js/jquery-ui.js"></script>
 
