@@ -6,7 +6,7 @@ public class Channel {
 	private String name;
 	private String sn;
 	private String url;
-	private int order;
+	private int sort;
 	private int status;
 	private int pchannelId;
 
@@ -34,14 +34,6 @@ public class Channel {
 		this.channelId = channelId;
 	}
 
-	public int getParentId() {
-		return pchannelId;
-	}
-
-	public void setParentId(int parentId) {
-		this.pchannelId = parentId;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -58,14 +50,6 @@ public class Channel {
 		this.url = url;
 	}
 
-	public int getOrder() {
-		return order;
-	}
-
-	public void setOrder(int order) {
-		this.order = order;
-	}
-
 	public int getStatus() {
 		return status;
 	}
@@ -74,16 +58,12 @@ public class Channel {
 		this.status = status;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Channel [channelId=" + channelId + ", name=" + name + ", url="
-				+ url + ", order=" + order + ", status=" + status
-				+ ", pchannelId=" + pchannelId + "]";
+	public void setSort(int sort) {
+		this.sort = sort;
+	}
+
+	public int getSort() {
+		return sort;
 	}
 
 }

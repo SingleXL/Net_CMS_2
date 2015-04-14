@@ -8,7 +8,7 @@
 		<result property="name" column="name" />
 		<result property="sn" column="sn"/>
 		<result property="url" column="url"/>
-		<result property="order" column="order" />
+		<result property="sort" column="sort" />
 		<result property="status" column="stauts" />
 		<result property="pchannelId" column="pchannelId"/>
 	</resultMap>
@@ -21,8 +21,8 @@
 	    select * from channels where sn = #{sn}
 	</select>
 	
-	<insert id="addChannel">
-	    
+	<insert id="addChannel" parameterType="com.cms.model.Channel">
+	    insert into channels(name,url,sort,status,pchannelId,sn) values(#{name},#{url},#{sort},#{status},#{pchannelId},#{sn})
 	</insert>
 	
 	<update id="editChannel"></update>

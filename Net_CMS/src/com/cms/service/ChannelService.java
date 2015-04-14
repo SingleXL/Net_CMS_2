@@ -26,7 +26,7 @@ public class ChannelService {
 
 		// 便利parent
 		for (Channel parent : channels) {
-			if (parent.getParentId() == 0) {
+			if (parent.getPchannelId() == 0) {
 				treeDto = new TreeDto<Channel>();
 				treeDto.setParent(parent);
 				channelTrees.add(treeDto);
@@ -35,7 +35,7 @@ public class ChannelService {
 
 		// 便利child
 		for (Channel child : channels) {
-			int pchannelId = child.getParentId();
+			int pchannelId = child.getPchannelId();
 			for (TreeDto<Channel> treeDto2 : channelTrees) {
 				if (treeDto2.getParent().getChannelId() == pchannelId) {
 					treeDto2.getChilds().add(child);

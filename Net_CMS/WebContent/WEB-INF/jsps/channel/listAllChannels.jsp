@@ -32,7 +32,7 @@
 			<c:forEach items="${channelTrees}" var="channelTree">
 		
 				<tr class="parent">
-					<td>${channelTree.parent.order}</td>
+					<td>${channelTree.parent.sort}</td>
 					<td>
 						<span><b><i class="fa fa-plus-square-o channelName"></i>&nbsp;${channelTree.parent.name}</b></span>
 					</td>			
@@ -59,7 +59,7 @@
 			
 				<c:forEach items="${channelTree.childs}" var="child">
 					<tr class="child">
-						<td>&nbsp;&nbsp;&nbsp;&nbsp;${child.order}</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;${child.sort}</td>
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>
 						${child.name}

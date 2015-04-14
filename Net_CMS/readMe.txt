@@ -20,9 +20,27 @@
 	翻页，上一页和下一页，需要改进
 
 4.栏目
+	添加一个栏目类型
+		链接类型
+		分类类型
 	
 5.文章
 	http://localhost:8080/channelName/new Date().getTime()
+	
+	文章栏目，禁用父栏目
+	<select class="selectpicker">
+     	  <optgroup label="Picnic">
+	          <option>Mustard</option>
+	          <option>Ketchup</option>
+	          <option>Relish</option>
+          </optgroup>
+	      <optgroup label="Camping">
+	          <option>Tent</option>
+	          <option>Flashlight</option>
+	          <option>Toilet Paper</option>
+	      </optgroup>
+     </select>
+	
 	
 6.验证码
 	Kaptcha
@@ -35,7 +53,15 @@
 	1),发送ajax请求
 	2),使用load方法
 	
+	post之后的重定向
+		可以使用ajax请求，然后后台获取状态，前台进行 ajax.load即可
+	
+	
+10.系统清理，清理一些缓存文件，例如上传的文件等
 
+11.后台左边菜单，无需再另写一个类，固定死
+
+12. status 0 启用，1 停用
 
 
 
