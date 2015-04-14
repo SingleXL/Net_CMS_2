@@ -11,20 +11,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="wuserIdth=device-wuserIdth, initial-scale=1.0, maximum-scale=1.0">
-	<link rel="icon" href="<%=basePath %>/resources/imgs/favcion.png" />	
-    <title>CMS鍚庡彴绠＄悊</title>
 </head>
 
 <body>
 
 <div>
-<h3>鏍忕洰鍒楄〃</h3>
+<h3>栏目列表</h3>
     
 	<table class="table table-hover table-bordered" style="font-size: 15px;">
 		<thead>
 			<tr>
-				<th><b>鏍忕洰鍚嶇О</b></th>
-				<th><b>缂栬緫鎿嶄綔</b></th>
+				<th><b>栏目名称</b></th>
+				<th><b>栏目操作</b></th>
 			</tr>
 		</thead>
 		
@@ -36,11 +34,11 @@
 						<span><i class="fa fa-plus-square-o channelName"></i>&nbsp;${channelTree.parent.name}</span>
 					</td>			
 					<td>
-						<a href="<%=basePath %>/admin/channel/edit/1" >缂栬緫</a>
+						<a href="<%=basePath %>/admin/channel/edit/1" >编辑</a>
 					&nbsp;
-						<a href="<%=basePath %>/admin/channel/addChild/${user.userId }" >娣诲姞瀛愮被</a>
+						<a href="<%=basePath %>/admin/channel/addChild/${user.userId }" >添加栏目</a>
 					&nbsp;
-						<a href="<%=basePath %>/admin/channel/delete/${user.userId }" title="${user.userId }" >鍒犻櫎</a>
+						<a href="<%=basePath %>/admin/channel/delete/${user.userId }" title="${user.userId }" >删除栏目</a>
 				</tr>
 			
 				<c:forEach items="${channelTree.childs}" var="child">
@@ -50,7 +48,7 @@
 						${child.name}
 						</td>			
 						<td>
-							<a href="<%=basePath %>/admin/channel/edit/1" >缂栬緫</a>
+							<a href="<%=basePath %>/admin/channel/edit/1" >编辑</a>
 						&nbsp;
 							<a href="<%=basePath %>/admin/channel/delete/${user.userId }" title="${user.userId }" >鍒犻櫎</a>
 					</tr>
@@ -84,13 +82,13 @@
 		<tfoot>
 			<tr>
 				<td colspan="5" style="text-align:right;font-size: 12px;padding-right: 20px;">
-				    <a class="previous" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo-1}">涓婁竴椤</a> 
+				    <a class="previous" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo-1}">上一页</a> 
 				    &nbsp;
-				    <a class="next" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo+1}">涓嬩竴椤�</a> 
+				    <a class="next" href="<%=basePath %>/admin/user/listPageUser?pageNoStr=${pageUser.pageNo+1}">下一页</a> 
 				    &nbsp;
-				          褰撳墠绗<span class="currentNo">${pageUser.pageNo }</span>椤�
+				          当前第<span class="currentNo">${pageUser.pageNo }</span>页
 				    &nbsp;
-				         鍏<span class="totalPageNum">${pageUser.totalPageNum }</span>椤�
+				         共<span class="totalPageNum">${pageUser.totalPageNum }</span>页
 				</td>
 			</tr>
 		</tfoot>
