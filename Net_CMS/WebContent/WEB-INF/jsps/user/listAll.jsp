@@ -33,13 +33,11 @@
 				<td>${user.userId }&nbsp;</td>
 				<td>${user.nickname }&nbsp;</td>
 				<td>${user.name }</td>
-				<td>${user.email }鏂规硶鍙嶅弽澶嶅鍙嶅弽澶嶅鍙嶅弽澶嶅</td>
+				<td>${user.email } 2217232293@qq.com</td>
 				<td>
-					<a href="admin/user/update/${user.userId }" >鏇存柊</a>
+					<a href="admin/user/update/${user.userId }" >更新</a>
 				&nbsp;
-					<a href="admin/user/delete/${user.userId }" title="${user.userId }" >鍒犻櫎</a>
-				&nbsp;
-					<a href="<%=request.getContextPath() %>/admin/user/listChannels/${user.userId }" >鏉冮檺绠＄悊</a>
+					<a href="admin/user/delete/${user.userId }" title="${user.userId }" >删除</a>
 				&nbsp;
 				</td>
 			</tr>

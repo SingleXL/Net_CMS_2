@@ -15,26 +15,29 @@ import com.cms.service.ChannelService;
 @Controller
 @RequestMapping("/admin/channel")
 public class ChannelController {
-	
+
 	@Autowired
 	private ChannelService channelService;
-	
+
 	@RequestMapping("/listAllChannels")
-	public String listAllChannels(Model model){
+	public String listAllChannels(Model model) {
 		List<TreeDto<Channel>> channelTrees = channelService.listAllChannels();
 		model.addAttribute("channelTrees", channelTrees);
 		return "channel/listAllChannels";
 	}
-	
-	@RequestMapping("/edit/{channelId}")
-	public String edit(@PathVariable("channelId")Integer channelId ){
-		return "channel/listAllChannels";
+
+	@RequestMapping("/edit/{channelSn}")
+	public String edit(@PathVariable("channelSn") String channelSn, Model model) {
+		Channel channel = channelService.findChannelBySn(channelSn);
+		model.addAttribute("channel", channel);
+		return "channel/editChannel";
 	}
-	
-	@RequestMapping("/addChild/{channelId}")
-	public String delte(@PathVariable("channelId")Integer channelId ){
-		System.out.println(1);
-		return "channel/listAllChannels";
+
+	@RequestMapping("/addChild/{channelSn}")
+	public String addChild(@PathVariable("channelSn") String channelSn, Model model) {
+		Channel channel = channelService.findChannelBySn(channelSn);
+		model.addAttribute("channel", channel);
+		return "channel/addChildChannel";
 	}
-	
+
 }

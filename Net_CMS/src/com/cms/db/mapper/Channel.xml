@@ -17,6 +17,10 @@
 	    select * from channels
 	</select>
 	
+	<select id="findChannelBySn" parameterType="string" resultMap="channelMap">
+	    select * from channels where sn = #{sn}
+	</select>
+	
 	<insert id="addChannel">
 	    
 	</insert>

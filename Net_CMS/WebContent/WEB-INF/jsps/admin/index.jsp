@@ -13,12 +13,16 @@
 	<link rel="icon" href="<%=basePath %>/resources/imgs/favcion.png" />	
     <title>CMS后台管理</title>
     
+    <link href="<%=basePath %>/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=basePath %>/resources/css/ui-theme/jquery.ui.css" rel="stylesheet">
     <link href="<%=basePath %>/resources/css/admin.css" rel="stylesheet">
     
    	<script src="<%=basePath %>/resources/js/jquery.js"></script>
-	<script src="<%=basePath %>/resources/js/jquery.form.js"></script>
 	<script src="<%=basePath %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
 	<script src="<%=basePath %>/resources/js/bootstrap.min.js"></script>
+	<script src="<%=basePath %>/resources/js/jquery.form.js"></script>
+	<script src="<%=basePath %>/resources/js/jquery.tablednd_0_5.js"></script>
+	<script src="<%=basePath %>/resources/js/jquery.ui.min.js"></script>
 	<script src="<%=basePath %>/resources/js/admin.js"></script>
 </head>
 

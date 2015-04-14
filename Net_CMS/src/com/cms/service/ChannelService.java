@@ -23,8 +23,8 @@ public class ChannelService {
 		List<Channel> channels = iChannelDao.listAllChannels();
 
 		TreeDto<Channel> treeDto = null;
-		
-		// µü´ú³ö¸¸Ç×
+
+		// ä¾¿åˆ©parent
 		for (Channel parent : channels) {
 			if (parent.getParentId() == 0) {
 				treeDto = new TreeDto<Channel>();
@@ -32,11 +32,11 @@ public class ChannelService {
 				channelTrees.add(treeDto);
 			}
 		}
-		
-		// µü´ú×ÓÀà
-		for(Channel child:channels){
+
+		// ä¾¿åˆ©child
+		for (Channel child : channels) {
 			int pchannelId = child.getParentId();
-			for(TreeDto<Channel> treeDto2 : channelTrees){
+			for (TreeDto<Channel> treeDto2 : channelTrees) {
 				if (treeDto2.getParent().getChannelId() == pchannelId) {
 					treeDto2.getChilds().add(child);
 				}
@@ -45,6 +45,10 @@ public class ChannelService {
 		return channelTrees;
 	}
 
+	public Channel findChannelBySn(String sn){
+		return iChannelDao.findChannelBySn(sn);
+	}
+	
 	public void addChannel(Channel channel) {
 		iChannelDao.addChannel(channel);
 	}

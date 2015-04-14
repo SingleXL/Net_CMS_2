@@ -21,7 +21,9 @@
 	<table class="table table-hover table-bordered" style="font-size: 15px;">
 		<thead>
 			<tr>
+				<th style="max-width:70px;width:70px;"><b>序号</b></th>
 				<th><b>栏目名称</b></th>
+				<th><b>栏目状态</b></th>
 				<th><b>栏目操作</b></th>
 			</tr>
 		</thead>
@@ -30,53 +32,61 @@
 			<c:forEach items="${channelTrees}" var="channelTree">
 		
 				<tr class="parent">
+					<td>${channelTree.parent.order}</td>
 					<td>
-						<span><i class="fa fa-plus-square-o channelName"></i>&nbsp;${channelTree.parent.name}</span>
+						<span><b><i class="fa fa-plus-square-o channelName"></i>&nbsp;${channelTree.parent.name}</b></span>
 					</td>			
 					<td>
-						<a href="<%=basePath %>/admin/channel/edit/1" >编辑</a>
+						<span>
+							<c:choose>
+								<c:when test="${channelTree.parent.status == 0}">
+									停用
+								</c:when>
+								<c:when test="${channelTree.parent.status == 1}">
+									启用
+								</c:when>
+							</c:choose>
+						</span>
+					</td>			
+					<td>
+						<a href="<%=basePath %>/admin/channel/edit/${channelTree.parent.sn}" >编辑</a>
 					&nbsp;
-						<a href="<%=basePath %>/admin/channel/addChild/${user.userId }" >添加栏目</a>
+						<a href="<%=basePath %>/admin/channel/addChild/${channelTree.parent.sn}" >添加子栏目</a>
 					&nbsp;
 						<a href="<%=basePath %>/admin/channel/delete/${user.userId }" title="${user.userId }" >删除栏目</a>
+					</td>
 				</tr>
 			
 				<c:forEach items="${channelTree.childs}" var="child">
 					<tr class="child">
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;${child.order}</td>
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>
 						${child.name}
 						</td>			
 						<td>
+							<span>
+								<c:choose>
+									<c:when test="${child.status == 0}">
+										停用
+									</c:when>
+									<c:when test="${child.status == 1}">
+										启用
+									</c:when>
+								</c:choose>
+							</span>
+						</td>			
+						<td>
 							<a href="<%=basePath %>/admin/channel/edit/1" >编辑</a>
 						&nbsp;
-							<a href="<%=basePath %>/admin/channel/delete/${user.userId }" title="${user.userId }" >鍒犻櫎</a>
+							<a href="<%=basePath %>/admin/channel/delete/${user.userId }" title="${user.userId }" >删除栏目</a>
+						</td>
 					</tr>
 			
 				</c:forEach>
 			
 			</c:forEach>
 			<tr class="parent"></tr>
-		</tbody>
-		
-		
-		<tbody>
-		<c:forEach items="${pageUser.list }" var="user">
-			<tr>
-				<td>${user.userId }&nbsp;</td>
-				<td>${user.nickname }&nbsp;</td>
-				<td>${user.name }</td>
-				<td>${user.email }鏂规硶鍙嶅弽澶嶅鍙嶅弽澶嶅鍙嶅弽澶嶅</td>
-				<td>
-					<a href="admin/user/update/${user.userId }" >鏇存柊</a>
-				&nbsp;
-					<a href="admin/user/delete/${user.userId }" title="${user.userId }" >鍒犻櫎</a>
-				&nbsp;
-					<a href="<%=request.getContextPath() %>/admin/user/listChannels/${user.userId }" >鏉冮檺绠＄悊</a>
-				&nbsp;
-				</td>
-			</tr>
-		</c:forEach>
 		</tbody>
 		
 		<tfoot>
@@ -98,33 +108,35 @@
 
 <script type="text/javascript">
 
-	$("table a").click(function(e) {
-		var loadPage = $(this).attr("href");
-		$(".contentpanel").load(loadPage);
-		return false;
+	$(function(){
+		$("table a").click(function(e) {
+			var loadPage = $(this).attr("href");
+			$(".contentpanel").load(loadPage);
+			return false;
+		});
+		
+		//表格折叠
+	 	$(function(){
+	 		$(".child").hide();
+	 		$(".parent").click(function(){
+	 			var check = $(this).hasClass("clicked");
+	 			if(check){
+	 				$(this).find(".channelName").removeClass("fa-minus-square-o");
+	 				$(this).find(".channelName").addClass("fa-plus-square-o");
+	 				$(this).removeClass("clicked");
+	 				$(this).nextUntil(".parent").slideUp(30);
+	 			}else{
+	 				$(this).find(".channelName").addClass("fa-minus-square-o");
+	 				$(this).find(".channelName").removeClass("fa-plus-square-o");
+	 				$(this).addClass("clicked");
+	 				$(this).nextUntil(".parent").show();
+	 				$(this).nextUntil(".parent").slideDown(30);
+	 			}
+	 			
+	 		});
+	 	});
+		
 	});
-
-	
- 	$(function(){
- 		$(".child").hide();
- 		$(".parent").click(function(){
- 			var check = $(this).hasClass("clicked");
- 			if(check){
- 				$(this).find(".channelName").removeClass("fa-minus-square-o");
- 				$(this).find(".channelName").addClass("fa-plus-square-o");
- 				$(this).removeClass("clicked");
- 				$(this).nextUntil(".parent").slideUp(30);
- 			}else{
- 				$(this).find(".channelName").addClass("fa-minus-square-o");
- 				$(this).find(".channelName").removeClass("fa-plus-square-o");
- 				$(this).addClass("clicked");
- 				$(this).nextUntil(".parent").show();
- 				$(this).nextUntil(".parent").slideDown(30);
- 			}
- 			
- 		});
- 	});
-	
 
 </script>
 </body>
