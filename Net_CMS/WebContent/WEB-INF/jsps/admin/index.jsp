@@ -40,6 +40,7 @@
                 <li class="nav-parent"><a href=""><i class="fa fa-columns"></i> <span>栏目管理</span></a>
                     <ul class="children">
                         <li><a href="<%=basePath %>/admin/channel/listAllChannels"><i class="fa fa-caret-right"></i>栏目列表</a></li>
+                        <li><a href="<%=basePath %>/admin/channel/addParentChannel"><i class="fa fa-caret-right"></i>添加栏目</a></li>
                     </ul>
                 </li>
                 

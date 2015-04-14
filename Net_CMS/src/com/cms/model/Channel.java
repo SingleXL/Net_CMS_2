@@ -10,6 +10,14 @@ public class Channel {
 	private int status;
 	private int pchannelId;
 
+	public int getPchannelId() {
+		return pchannelId;
+	}
+
+	public void setPchannelId(int pchannelId) {
+		this.pchannelId = pchannelId;
+	}
+
 	public void setSn(String sn) {
 		this.sn = sn;
 	}
