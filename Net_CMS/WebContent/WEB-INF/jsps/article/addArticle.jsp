@@ -20,6 +20,21 @@
 		.form-group{
 			padding-right: 10px;
 		}
+		
+		/* 		keybord */
+		.keyword-wrap{
+			background: #2fa7cb;
+			width:auto;
+			padding:1px 4px;
+			margin:1px;
+			display:inline-block !important;
+			-moz-border-radius: 3px;      /* Gecko browsers */
+    		-webkit-border-radius: 3px;   /* Webkit browsers */
+    		border-radius:3px;            /* W3C syntax */
+		}
+		.keyword{font-size:12px;color: #1D2939;margin-right: 2px}
+ 		.removeK{color: #ffb7cb;cursor: pointer;} 
+		
 	</style>
 	
 </head>
@@ -58,10 +73,42 @@
 	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>关键词</b></label>
-	        <div class="col-sm-10">
-		        <sf:input path="title" class="form-control"/>
+	        <div class="col-sm-10 keyword-container ">
+	        	<div id="keywords">
+	        	</div>
+				<input type="text" id="keyword-input" value="输入关键字">        
 	        </div>
 	    </div>
+	    
+	    <script type="text/javascript">
+	    	$(function(){
+	    		
+	    		function createKeyWord(val){
+	    			return '<div class="keyword-wrap">'
+	    				+'<span class="keyword">'+val+'</span>'
+	    				+'<span class="removeK"><b>X</b></span>'
+	        			+'</div>';
+	    		}
+	    		
+	    		$("#keyword-input").keyup(function(event){
+	    			var code = event.keyCode;
+	    			if(code == 188 || code == 13){
+	    				var con = $(this).val();
+						if(con!=""){
+		    				var K = createKeyWord(con)
+							$("#keywords").append(K);
+		    				$(this).val()
+						}	    				
+	    			}
+	    		});
+	    		
+	    	});
+	    </script>
+	    
+	    
+	    
+	    
+	    
 	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>附件</b></label>
@@ -85,7 +132,7 @@
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>文章内容</b></label>
 	        <div class="col-sm-10" >
-		        <sf:textarea path="content" class="form-control" rows="25" id="content" style="max-width: 750px;"/>
+		        <sf:textarea path="content" class="form-control" rows="20" id="content" style="max-width: 750px;"/>
 	        </div>
 	    </div>
 	    
