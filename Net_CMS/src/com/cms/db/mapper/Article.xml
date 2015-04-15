@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.IArticleDao">
+	<resultMap type="com.cms.model.Article" id="articleDao">
+		<result property="channelId" column="channelId" />
+		<result property="name" column="name" />
+		<result property="sn" column="sn"/>
+		<result property="url" column="url"/>
+		<result property="sort" column="sort" />
+		<result property="status" column="stauts" />
+		<result property="pchannelId" column="pchannelId"/>
+	</resultMap>
+	
+</mapper>
