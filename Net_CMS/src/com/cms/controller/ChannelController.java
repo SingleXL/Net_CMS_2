@@ -30,6 +30,7 @@ public class ChannelController {
 
 	@RequestMapping("/edit/{channelSn}")
 	public String edit(@PathVariable("channelSn") String channelSn, Model model) {
+		System.out.println(1111);
 		Channel channel = channelService.findChannelBySn(channelSn);
 		model.addAttribute("channel", channel);
 		return "channel/editChannel";

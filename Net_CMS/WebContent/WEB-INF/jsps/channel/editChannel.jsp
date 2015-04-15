@@ -45,13 +45,22 @@
 	    <div class="form-group form-group-md">
 	        <label class="col-sm-3 control-label" >排列序号</label>
 	        <div class="col-sm-9">
-	            <sf:input path="sort" class="form-control" value="${channel.order}" />
+	            <sf:input path="sort" class="form-control" value="${channel.sort}" />
 	        </div>
 	    </div>
 	    <div class="form-group form-group-md">
 	        <label class="col-sm-3 control-label" >栏目状态</label>
 	        <div class="col-sm-9">
-	            <sf:input path="status" class="form-control" value="${channel.status}" />
+				
+				<c:if test="${channel.status == 0 }">
+		            <sf:input path="status" class="form-control" value="停用" />
+				</c:if>	        
+	            
+				<c:if test="${channel.status == 1 }">
+		            <sf:input path="status" class="form-control" value="启用" />
+				</c:if>	        
+	            
+	            
 	        </div>
 	    </div>
 	    

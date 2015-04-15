@@ -24,6 +24,8 @@
 	<script src="<%=basePath %>/resources/js/jquery.tablednd_0_5.js"></script>
 	<script src="<%=basePath %>/resources/js/jquery.ui.min.js"></script>
 	<script src="<%=basePath %>/resources/js/admin.js"></script>
+	<script src="<%=basePath %>/resources/xheditor/xheditor-zh-cn.min.js"></script>
+	
 </head>
 
 <body>

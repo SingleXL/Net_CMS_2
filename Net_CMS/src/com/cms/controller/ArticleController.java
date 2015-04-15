@@ -1,39 +1,38 @@
 package com.cms.controller;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.log4j.pattern.IntegerPatternConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cms.auth.AuthClass;
 import com.cms.auth.AuthMethod;
+import com.cms.dao.IChannelDao;
+import com.cms.dto.TreeDto;
+import com.cms.model.Article;
+import com.cms.model.Channel;
+import com.cms.service.ChannelService;
 
 @AuthClass(uri = "/articl")
 @Controller
 @RequestMapping("/admin/article")
 public class ArticleController {
 
-	@AuthMethod(rightUrl = "/add", rightName = "添加文章")
+	@Autowired
+	private ChannelService channelService;
+	
+	@AuthMethod(rightUrl = "/add", rightName = "娣诲姞鏂囩珷")
 	@RequestMapping("/addArticle")
-	public String addArticle(HttpSession session) {
-
-		List<String> strs = new LinkedList<String>();
-		strs.add("1");
-		strs.add("4");
-
-		session.setAttribute("uu", strs);
-
+	public String addArticle(Model model) {
+		List<TreeDto<Channel>> channelTrees = channelService.listAllChannels();
+		model.addAttribute("channelTrees", channelTrees);
+		model.addAttribute("article", new Article());
 		return "article/addArticle";
 	}
 
-	@AuthMethod(rightUrl = "/list", rightName = "列出文章")
+	@AuthMethod(rightUrl = "/list", rightName = "鏂囩珷鍒楄〃")
 	@RequestMapping("/listAllArticles")
 	public String listAllArticles(Model model) {
 		System.out.println(model.getClass());
@@ -41,7 +40,7 @@ public class ArticleController {
 		return "article/listAllArticles";
 	}
 
-	@AuthMethod(rightUrl = "/edit", rightName = "编辑文章")
+	@AuthMethod(rightUrl = "/edit", rightName = "鍙戝竷鏂囩珷")
 	@RequestMapping("/publishArticle")
 	public void editArticle() {
 	}
