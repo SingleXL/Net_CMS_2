@@ -16,6 +16,7 @@
     <link href="<%=basePath %>/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=basePath %>/resources/css/ui-theme/jquery.ui.css" rel="stylesheet">
     <link href="<%=basePath %>/resources/css/admin.css" rel="stylesheet">
+    <link href="<%=basePath %>/resources/css/uploadify.css" rel="stylesheet">
     
    	<script src="<%=basePath %>/resources/js/jquery.js"></script>
 	<script src="<%=basePath %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
@@ -25,6 +26,7 @@
 	<script src="<%=basePath %>/resources/js/jquery.ui.min.js"></script>
 	<script src="<%=basePath %>/resources/js/admin.js"></script>
 	<script src="<%=basePath %>/resources/xheditor/xheditor-zh-cn.min.js"></script>
+	<script src="<%=basePath %>/resources/uploadify/jquery.uploadify-3.1.min.js"></script>
 	
 </head>
 

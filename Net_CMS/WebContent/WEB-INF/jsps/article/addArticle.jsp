@@ -21,7 +21,7 @@
 			padding-right: 10px;
 		}
 		
-		/* 		keybord */
+		/* keybord */
 		.keyword-wrap{
 			background: #2fa7cb;
 			width:auto;
@@ -34,13 +34,17 @@
 		}
 		.keyword{font-size:12px;color: #1D2939;margin-right: 2px}
  		.removeK{color: #ffb7cb;cursor: pointer;} 
+ 		
+ 		#keywords{float: left;}
+ 		#keyword-input{display: inline-block;float: left;margin-left: 4px;}
+ 		
 		
 	</style>
 	
 </head>
 
 <body>
-
+<span style="display: none;" id="ctx">${pageContext.request.contextPath}</span>
 
 <h3>添加文章</h3>
 <div class="row">
@@ -73,7 +77,7 @@
 	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>关键词</b></label>
-	        <div class="col-sm-10 keyword-container ">
+	        <div class="col-sm-10 keyword-container">
 	        	<div id="keywords">
 	        	</div>
 				<input type="text" id="keyword-input" value="输入关键字">        
@@ -83,6 +87,9 @@
 	    <script type="text/javascript">
 	    	$(function(){
 	    		
+	    		//keyword 
+	    		var keywords;
+	    		
 	    		function createKeyWord(val){
 	    			return '<div class="keyword-wrap">'
 	    				+'<span class="keyword">'+val+'</span>'
@@ -91,36 +98,104 @@
 	    		}
 	    		
 	    		$("#keyword-input").keyup(function(event){
+	    			var _this = $(this);
 	    			var code = event.keyCode;
 	    			if(code == 188 || code == 13){
-	    				var con = $(this).val();
-						if(con!=""){
+	    				var con = $(this).val().trim().replace(/\s/g, "");
+						if(con.length!=0){
+							if($(".keyword-wrap").length >= 5){
+								alert("只允许添加5个关键字");
+								event.preventDefault();
+								_this.val("");
+								return
+							}
+							
+							var isExit = false;
+							$(".keyword").each(function(){
+								if($(this).html()==con){
+									alert("不能添加重复关键字");
+									isExit = true;
+								}	
+							});	
+							
+							if(isExit){
+								event.preventDefault();
+								_this.val("");
+								return
+							}
+							
+		    				if(code == 188){
+		    					con = con.substr(0,con.length-1);
+		    					if(con.length == 0) return
+		    				}
 		    				var K = createKeyWord(con)
 							$("#keywords").append(K);
-		    				$(this).val()
+		    				$(this).val("")
 						}	    				
 	    			}
 	    		});
+	    		
+	    		$("body").on("click",".removeK",function(e){
+					$(this).closest(".keyword-wrap").remove()	    			
+	    			e.preventDefault();
+	    		});
+	    		
+	    		$("#keyword-input").focus(function(){
+	    			$(this).val("")
+	    		})
+	    		$("#keyword-input").blur(function(){
+	    			$(this).val("请输入关键字")
+	    		})
+	    		
 	    		
 	    	});
 	    </script>
 	    
 	    
-	    
-	    
-	    
-	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>附件</b></label>
 	        <div class="col-sm-10">
-	        	<div class="row" style="width: 100px;">
-	        		<input type="file" value="文件上传" >
+	        	<div class="row" style="width: 100px;padding-left:10px; ">
+	        		<input type="file" id="attach" value="文件上传" >
 	        	</div>
-        		<div class="row uploadFiles">
-					sss
+        		<div class="row uploadFiles" style="padding-left: 10px;">
+					<table class="table table-hover table-bordered" style="font-size: 15px;">
+						<thead>
+							<tr>
+								<th><b>用户ID</b></th>
+								<th><b>用户名</b></th>
+								<th><b>用户昵称</b></th>
+								<th><b>用户邮箱</b></th>
+								<th><b>用户操作</b></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+							</tr>						
+						</tbody>
+						<tfoot>
+						</tfoot>
+					</table>	
 				</div>
 	        </div>
 	    </div>
+	    
+	    
+	    <script type="text/javascript">
+	    	$(function(){
+	    		$("#attach").uploadify({
+					swf:$("#ctx").html() + "/resources/uploadify/uploadify.swf",
+					uploader:'upload'
+	    		});
+	    	});
+	    </script>
+	    
+	    
 	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>文章摘要</b></label>
@@ -162,7 +237,7 @@ $(function(){
 	
 	// 文章编辑器
 	$('#content').xheditor({
-		tools:'Cut,Copy,Paste,Pastetext,Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,SelectAll,Removeformat,Align,List,Outdent,Indent,Emot,Table,About',
+		tools:'Cut,Copy,Paste,Pastetext,Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,SelectAll,Removeformat,Align,List,Outdent,Indent,Emot,Img,Table,About',
 		skin:'o2007blue'
 	});
 	
