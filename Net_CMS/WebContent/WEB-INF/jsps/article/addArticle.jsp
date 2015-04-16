@@ -46,7 +46,7 @@
 <div class="row">
 
 
-	<div style="max-width: 900px;padding-bottom: 40px;">
+	<div style="max-width: 900px;padding-bottom: 80px;">
 	
 	<sf:form action="${ctx}/admin/article/addArticle " class="form-horizontal " modelAttribute="article" method="post">
 	    <div class="form-group ">
