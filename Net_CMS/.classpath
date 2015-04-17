@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Java 1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -57,6 +58,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web.servlet-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web.struts-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/standard-1.1.2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/Thumbnailator.rar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/thumbnailator-0.4.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

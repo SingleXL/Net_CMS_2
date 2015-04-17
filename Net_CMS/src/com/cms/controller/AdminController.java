@@ -12,8 +12,7 @@ public class AdminController {
 	
 	@RequestMapping("/")
 	@ResponseBody
-	public String test() {
-		System.out.println(1);
+	public String admin() {
 		return "";
 	}
 	

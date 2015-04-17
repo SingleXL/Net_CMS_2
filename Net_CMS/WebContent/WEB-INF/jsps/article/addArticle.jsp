@@ -198,7 +198,7 @@
 				uploader:$("#ctx").html() +'/admin/attach/upload',
 				fileObjName:"attach",
 				auto:false,
-				fileTypeExts:"*.jpg;*.gif;*.png;*.doc;*.docx;*.txt;*.xls;*.xlsx;*.rar;*.zip;*.pdf;*.avi;",
+				fileTypeExts:"*.jpg;*.jpeg;*.gif;*.png;*.doc;*.docx;*.txt;*.xls;*.xlsx;*.rar;*.zip;*.pdf;*.avi;",
 				onUploadSuccess:function(file,data,response){
 					console.log(data);
 				}

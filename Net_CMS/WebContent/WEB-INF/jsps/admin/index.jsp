@@ -27,10 +27,10 @@
 	<script src="<%=basePath %>/resources/js/admin.js"></script>
 	<script src="<%=basePath %>/resources/xheditor/xheditor-zh-cn.min.js"></script>
 	<script src="<%=basePath %>/resources/uploadify/jquery.uploadify-3.1.min.js"></script>
+	<script src="<%=basePath %>/resources/uploadify/jquery.Jcrop.js"></script>
 	
 </head>
 
-<% session.setAttribute("aa", "aa"); %>
 
 <body>
 
