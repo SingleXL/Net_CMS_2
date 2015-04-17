@@ -30,6 +30,8 @@
 	
 </head>
 
+<% session.setAttribute("aa", "aa"); %>
+
 <body>
 
 <section>

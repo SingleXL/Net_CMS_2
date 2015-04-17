@@ -37,7 +37,7 @@
  		
  		#keywords{float: left;}
  		#keyword-input{display: inline-block;float: left;margin-left: 4px;}
- 		
+ 		td{word-break:break-all;}
 		
 	</style>
 	
@@ -151,31 +151,36 @@
 	    	});
 	    </script>
 	    
-	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>附件</b></label>
 	        <div class="col-sm-10">
-	        	<div class="row" style="width: 100px;padding-left:10px; ">
-	        		<input type="file" id="attach" value="文件上传" >
+	        	<div class="row" style="padding-left:10px; ">
+			        <div class="col-sm-6">
+	        			<input type="file" id="attach" value="" >
+	        		</div>
+			        <div class="col-sm-4">
+	        			<button class="btn btn-info btn-sm upfiles">上传</button>
+	        		</div>
+	        		
 	        	</div>
         		<div class="row uploadFiles" style="padding-left: 10px;">
-					<table class="table table-hover table-bordered" style="font-size: 15px;">
+					<table class="table table-hover table-bordered" style="font-size: 13px;">
 						<thead>
 							<tr>
-								<th><b>用户ID</b></th>
-								<th><b>用户名</b></th>
-								<th><b>用户昵称</b></th>
-								<th><b>用户邮箱</b></th>
-								<th><b>用户操作</b></th>
+								<th style="max-width:30%;width:25%;"><b>附件名</b></th>
+								<th style="max-width:30%;width:25%;"><b>附件缩略图</b></th>
+								<th style="max-width:15%;width:15%;"><b>附件类型</b></th>
+								<th style="max-width:25%;width:25%;"><b>附件操作</b></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
+								<td style="max-width:30%;">1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶</td>
+								<td style="max-width:30%;">1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶</td>
+								<td style="max-width:15%;">1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶</td>
+								<td style="max-width:25%;">
+									插入到文章，
+								</td>
 							</tr>						
 						</tbody>
 						<tfoot>
@@ -185,14 +190,26 @@
 	        </div>
 	    </div>
 	    
-	    
 	    <script type="text/javascript">
+	    
+	    	// attachment
+			$("#attach").uploadify({
+				swf:$("#ctx").html() + "/resources/uploadify/uploadify.swf",
+				uploader:$("#ctx").html() +'/admin/attach/upload',
+				fileObjName:"attach",
+				auto:false,
+				fileTypeExts:"*.jpg;*.gif;*.png;*.doc;*.docx;*.txt;*.xls;*.xlsx;*.rar;*.zip;*.pdf;*.avi;",
+				onUploadSuccess:function(file,data,response){
+					console.log(data);
+				}
+	   		});
 	    	$(function(){
-	    		$("#attach").uploadify({
-					swf:$("#ctx").html() + "/resources/uploadify/uploadify.swf",
-					uploader:'upload'
-	    		});
+				$(".upfiles").click(function(){
+					$("#attach").uploadify("upload","*");
+				});	    		
 	    	});
+	    	
+	    	
 	    </script>
 	    
 	    
@@ -207,7 +224,7 @@
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>文章内容</b></label>
 	        <div class="col-sm-10" >
-		        <sf:textarea path="content" class="form-control" rows="20" id="content" style="max-width: 750px;"/>
+		        <sf:textarea path="content" class="form-control" rows="20" id="content" style="max-width: 800px;"/>
 	        </div>
 	    </div>
 	    
