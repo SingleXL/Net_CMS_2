@@ -29,11 +29,16 @@ public class AttachMentController {
 		Attachment attTemp = new Attachment();
 		attTemp.setNewName(new Date().getTime() + "." + extName);
 		attTemp.setOldName(attach.getOriginalFilename());
-		attTemp.setImg(ImgTypes.imgType.contains(extName));
-		
-		System.out.println(attTemp);
-		
-		
+
+		boolean isImg = ImgTypes.imgType.contains(extName);
+		if (isImg) {
+			attTemp.setType("图片类型");
+			attTemp.setImg(ImgTypes.imgType.contains(extName));
+		} else {
+			attTemp.setType("文档类型");
+			attTemp.setImg(false);
+		}
+
 		return new Gson().toJson(Arrays.asList("f", "a"));
 	}
 

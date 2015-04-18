@@ -17,7 +17,7 @@
 <body>
 
 <div>
-	<table class="table table-hover table-bordered" style="font-size: 15px;">
+	<table class="table table-hover table-bordered" style="font-size: 14px;">
 		<thead>
 			<tr>
 				<th><b>用户ID</b></th>
