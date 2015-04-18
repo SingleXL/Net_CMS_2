@@ -243,7 +243,7 @@
 	    <div class="form-group" style="display: none;">
 	        <label class="col-sm-2 control-label"><b>文章缩略图</b></label>
 	        <div class="col-sm-10" >
-		        <sf:textarea path="thumb" class="form-control" rows="20" id="content" style="max-width: 800px;"/>
+		        <sf:textarea path="thumb" class="form-control" rows="20" style="max-width: 800px;"/>
 	        </div>
 	    </div>
 	    
@@ -282,7 +282,7 @@ $(function(){
 		tools:'Cut,Copy,Paste,Pastetext,Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,SelectAll,Removeformat,Align,List,Outdent,Indent,Emot,Img,Table,About',
 		skin:'o2007blue'
 	});
-	
+	console.log(editor)
 	
 	// 上传文件列表中的a链接
 	$(".uploadFiles a").click(function(e) {
@@ -310,14 +310,16 @@ $(function(){
 	})
 	
 	$("body").on("click",".deleteAtt",function(){
-		
+		var trObj = $(this).closest("tr");
+		trObj.remove();
 	})
 	
 	$("body").on("click",".deletePic",function(){
 		var trObj = $(this).closest("tr");
-		console.log(trObj.find(".thumbPIC").find("img"));
 		var sn = trObj.find(".thumbPIC").find("img").attr("sn");
 		$("iframe").contents().find("img[sn='"+sn+"']").remove();
+		
+		trObj.remove();
 	})
 	
 	$("body").on("click",".insertInto",function(){
