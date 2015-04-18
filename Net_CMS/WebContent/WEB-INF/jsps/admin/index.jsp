@@ -25,9 +25,10 @@
 	<script src="<%=basePath %>/resources/js/jquery.tablednd_0_5.js"></script>
 	<script src="<%=basePath %>/resources/js/jquery.ui.min.js"></script>
 	<script src="<%=basePath %>/resources/js/admin.js"></script>
-	<script src="<%=basePath %>/resources/xheditor/xheditor-zh-cn.min.js"></script>
+	<script src="<%=basePath %>/resources/xheditor/xheditor-1.2.1.min.js"></script>
+	<script src="<%=basePath %>/resources/xheditor/xheditor_lang/zh-cn.js"></script>
 	<script src="<%=basePath %>/resources/uploadify/jquery.uploadify-3.1.min.js"></script>
-	<script src="<%=basePath %>/resources/uploadify/jquery.Jcrop.js"></script>
+	<script src="<%=basePath %>/resources/js/jquery.Jcrop.js"></script>
 	
 </head>
 

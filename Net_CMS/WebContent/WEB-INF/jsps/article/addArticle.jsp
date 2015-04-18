@@ -154,7 +154,7 @@
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>附件</b></label>
 	        <div class="col-sm-10">
-	        	<div class="row" style="padding-left:10px; ">
+	        	<div class="row" style="padding-left:0px; ">
 			        <div class="col-sm-6">
 	        			<input type="file" id="attach" value="" >
 	        		</div>
@@ -163,25 +163,17 @@
 	        		</div>
 	        		
 	        	</div>
-        		<div class="row uploadFiles" style="padding-left: 10px;">
+        		<div class="row" style="padding-left: 10px;">
 					<table class="table table-hover table-bordered" style="font-size: 13px;">
 						<thead>
 							<tr>
 								<th style="max-width:30%;width:25%;"><b>附件名</b></th>
-								<th style="max-width:30%;width:25%;"><b>附件缩略图</b></th>
+								<th style="max-width:25%;width:25%;"><b>附件缩略图</b></th>
 								<th style="max-width:15%;width:15%;"><b>附件类型</b></th>
-								<th style="max-width:25%;width:25%;"><b>附件操作</b></th>
+								<th style="max-width:30%;width:30%;"><b>附件操作</b></th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td style="max-width:30%;">1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶</td>
-								<td style="max-width:30%;">1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶</td>
-								<td style="max-width:15%;">1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶1顶</td>
-								<td style="max-width:25%;">
-									插入到文章，
-								</td>
-							</tr>						
+						<tbody class="uploadFiles">
 						</tbody>
 						<tfoot>
 						</tfoot>
@@ -193,16 +185,47 @@
 	    <script type="text/javascript">
 	    
 	    	// attachment
+	    	function createAtt(attach){
+	    		var sn = attach.sn;
+	    		var name = attach.oldName;
+	    		var type = attach.type;
+	    		var thumbPIC = ""
+	    		var oper = ""
+	    		
+	    		if(attach.img){
+    				thumbPIC="图片"
+    				oper = "<a>设为缩略图</a>&nbsp;&nbsp;<a>插入文章</a>&nbsp;&nbsp;<a>删除附件</a>"
+	    		}else{
+	    			thumbPIC = "略"
+    				oper = "<a>删除附件</a>"
+	    		}
+	    		
+	    		return "<tr>"
+	    			+ "<td>"+name+"</td>"
+	    			+ "<td>"+thumbPIC+"</td>"
+	    			+ "<td>"+type+"</td>"
+	    			+ "<td>"
+	    			+	oper
+	    			+ "</td>"
+	    			+ "</tr>";
+	    			
+	    			
+	    	}
+	    	
 			$("#attach").uploadify({
 				swf:$("#ctx").html() + "/resources/uploadify/uploadify.swf",
 				uploader:$("#ctx").html() +'/admin/attach/upload',
 				fileObjName:"attach",
 				auto:false,
+				upImgUrl:true,
 				fileTypeExts:"*.jpg;*.jpeg;*.gif;*.png;*.doc;*.docx;*.txt;*.xls;*.xlsx;*.rar;*.zip;*.pdf;*.avi;",
 				onUploadSuccess:function(file,data,response){
-					console.log(data);
+					var attach = $.parseJSON(data);
+					var attachTr = createAtt(attach);
+					$(".uploadFiles").append(attachTr);
 				}
 	   		});
+	    	
 	    	$(function(){
 				$(".upfiles").click(function(){
 					$("#attach").uploadify("upload","*");
@@ -213,21 +236,12 @@
 	    </script>
 	    
 	    
-	    
-	    <div class="form-group">
-	        <label class="col-sm-2 control-label"><b>文章摘要</b></label>
-	        <div class="col-sm-10" >
-		        <sf:textarea path="summary" class="form-control" rows="3" style="max-width: 750px;max-height:250px;"/>
-	        </div>
-	    </div>
-	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>文章内容</b></label>
 	        <div class="col-sm-10" >
 		        <sf:textarea path="content" class="form-control" rows="20" id="content" style="max-width: 800px;"/>
 	        </div>
 	    </div>
-	    
 	    
 	    <button type="submit" class="btn btn-primary btn-sm pull-right ">添加</button>
 	</sf:form>

@@ -5,6 +5,7 @@ public class Attachment {
 
 	private String newName;
 	private String oldName;
+	private String sn;
 	private String type;
 	private boolean isImg;
 	// 文章的新名字
@@ -14,8 +15,24 @@ public class Attachment {
 		return attachId;
 	}
 
+	public boolean isImg() {
+		return isImg;
+	}
+
+	public void setImg(boolean isImg) {
+		this.isImg = isImg;
+	}
+
 	public void setAttachId(Integer attachId) {
 		this.attachId = attachId;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
+	}
+
+	public String getSn() {
+		return sn;
 	}
 
 	public String getNewName() {
@@ -42,14 +59,6 @@ public class Attachment {
 		this.type = type;
 	}
 
-	public boolean isImg() {
-		return isImg;
-	}
-
-	public void setImg(boolean isImg) {
-		this.isImg = isImg;
-	}
-
 	public String getArticleName() {
 		return articleName;
 	}
@@ -62,9 +71,7 @@ public class Attachment {
 	public String toString() {
 		return "Attachment [attachId=" + attachId + ", newName=" + newName
 				+ ", oldName=" + oldName + ", type=" + type + ", isImg="
-				+ isImg + ", articleName=" + articleName + "]";
+				+ "articleName=" + articleName + "]";
 	}
-	
-	
 
 }
