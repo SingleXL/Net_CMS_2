@@ -11,6 +11,7 @@ public class Article {
 	private String publishDate;
 	private String channel;
 	private String author;
+	private String thumb;
 
 	public Integer getArticleId() {
 		return articleId;
@@ -90,6 +91,14 @@ public class Article {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public void setThumb(String thumb) {
+		this.thumb = thumb;
+	}
+
+	public String getThumb() {
+		return thumb;
 	}
 
 }

@@ -39,6 +39,10 @@
  		#keyword-input{display: inline-block;float: left;margin-left: 4px;}
  		td{word-break:break-all;}
 		
+		/*upload files*/
+		.uploadFiles a:hover {cursor: pointer;}
+		
+		
 	</style>
 	
 </head>
@@ -167,14 +171,16 @@
 					<table class="table table-hover table-bordered" style="font-size: 13px;">
 						<thead>
 							<tr>
-								<th style="max-width:30%;width:25%;"><b>附件名</b></th>
 								<th style="max-width:25%;width:25%;"><b>附件缩略图</b></th>
+								<th style="max-width:30%;width:25%;"><b>附件名</b></th>
 								<th style="max-width:15%;width:15%;"><b>附件类型</b></th>
 								<th style="max-width:30%;width:30%;"><b>附件操作</b></th>
 							</tr>
 						</thead>
+						
 						<tbody class="uploadFiles">
 						</tbody>
+						
 						<tfoot>
 						</tfoot>
 					</table>	
@@ -187,29 +193,29 @@
 	    	// attachment
 	    	function createAtt(attach){
 	    		var sn = attach.sn;
-	    		var name = attach.oldName;
+	    		var oldName = attach.oldName;
+	    		var newName = attach.newName;
 	    		var type = attach.type;
 	    		var thumbPIC = ""
 	    		var oper = ""
 	    		
 	    		if(attach.img){
     				thumbPIC="图片"
-    				oper = "<a>设为缩略图</a>&nbsp;&nbsp;<a>插入文章</a>&nbsp;&nbsp;<a>删除附件</a>"
+    				thumbPIC="<img sn="+sn+" src='<%=basePath %>/resources/upload/thumbs/"+newName+"'/> "
+    				oper = "<a class='setThumb'>设为缩略图</a>&nbsp;&nbsp;<a class='cancelThumb' style='display:none'>取消缩略图</a>&nbsp;&nbsp;<a class='insertInto'>插入文章</a>&nbsp;&nbsp;<a class='deletePic'>删除附件</a>"
 	    		}else{
 	    			thumbPIC = "略"
-    				oper = "<a>删除附件</a>"
+    				oper = "<a class='deleteAtt'>删除附件</a>"
 	    		}
 	    		
 	    		return "<tr>"
-	    			+ "<td>"+name+"</td>"
-	    			+ "<td>"+thumbPIC+"</td>"
-	    			+ "<td>"+type+"</td>"
+	    			+ "<td class='thumbPIC'>"+thumbPIC+"</td>"
+	    			+ "<td>"+oldName+"</td>"
+	    			+ "<td class='picType'>"+type+"</td>"
 	    			+ "<td>"
 	    			+	oper
 	    			+ "</td>"
 	    			+ "</tr>";
-	    			
-	    			
 	    	}
 	    	
 			$("#attach").uploadify({
@@ -231,10 +237,15 @@
 					$("#attach").uploadify("upload","*");
 				});	    		
 	    	});
-	    	
-	    	
 	    </script>
 	    
+	    
+	    <div class="form-group" style="display: none;">
+	        <label class="col-sm-2 control-label"><b>文章缩略图</b></label>
+	        <div class="col-sm-10" >
+		        <sf:textarea path="thumb" class="form-control" rows="20" id="content" style="max-width: 800px;"/>
+	        </div>
+	    </div>
 	    
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>文章内容</b></label>
@@ -267,10 +278,52 @@ $(function(){
 	$('form').ajaxForm(options);
 	
 	// 文章编辑器
-	$('#content').xheditor({
+	var editor = $('#content').xheditor({
 		tools:'Cut,Copy,Paste,Pastetext,Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,SelectAll,Removeformat,Align,List,Outdent,Indent,Emot,Img,Table,About',
 		skin:'o2007blue'
 	});
+	
+	
+	// 上传文件列表中的a链接
+	$(".uploadFiles a").click(function(e) {
+		return false;
+	});
+	
+	$("body").on("click",".setThumb",function(){
+		$(this).hide();
+		
+		$(".picType").html("普通图片");
+		$(".cancelThumb").hide();
+		$(".setThumb").hide();
+		
+		var trObj = $(this).closest("tr");
+		trObj.find(".picType").html("<b>文章缩略图</b>");
+		trObj.find(".cancelThumb").show();
+	})
+	
+	$("body").on("click",".cancelThumb",function(){
+		$(this).hide();
+		
+		$(".picType").html("普通图片");
+		$(".setThumb").show();
+		
+	})
+	
+	$("body").on("click",".deleteAtt",function(){
+		
+	})
+	
+	$("body").on("click",".deletePic",function(){
+		var trObj = $(this).closest("tr");
+		console.log(trObj.find(".thumbPIC").find("img"));
+		var sn = trObj.find(".thumbPIC").find("img").attr("sn");
+		$("iframe").contents().find("img[sn='"+sn+"']").remove();
+	})
+	
+	$("body").on("click",".insertInto",function(){
+		var trObj = $(this).closest("tr");
+		editor.appendHTML(trObj.find(".thumbPIC").html());
+	})
 	
 	
 });

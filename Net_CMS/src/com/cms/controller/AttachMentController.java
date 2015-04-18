@@ -8,6 +8,8 @@ import java.util.Date;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
+import net.coobird.thumbnailator.Thumbnails;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
@@ -28,10 +30,8 @@ public class AttachMentController {
 	public Attachment upload(MultipartFile attach, HttpSession session) throws IOException {
 		
 		String upPath = session.getServletContext().getRealPath("/resources/upload/files");
-		String thumbsPath = session.getServletContext().getRealPath("/resources/upload/files/thumbs");
+		String thumbsPath = session.getServletContext().getRealPath("/resources/upload/thumbs");
 		
-		File f = new File(upPath+"/"+attach.getOriginalFilename());
-		FileUtils.copyInputStreamToFile(attach.getInputStream(), f);
 		
 		String extName = FilenameUtils.getExtension(attach
 				.getOriginalFilename());
@@ -45,14 +45,20 @@ public class AttachMentController {
 		boolean isImg = ImgTypes.imgType.contains(extName);
 		
 		if (isImg) {
-			attTemp.setType("图片类型");
+			attTemp.setType("普通图片");
 			attTemp.setImg(true);
+			
+			// 存储缩略图
+			Thumbnails.of(attach.getInputStream()).size(120, 90).keepAspectRatio(false).
+			toFile(thumbsPath+"/" + attTemp.getNewName() );
 		} else {
 			attTemp.setType("文档类型");
 			attTemp.setImg(false);
 		}
 		
-		
+		// 存储图片及附件
+		File f = new File(upPath+"/"+attTemp.getNewName());
+		FileUtils.copyInputStreamToFile(attach.getInputStream(), f);
 		
 		return attTemp;
 	}
